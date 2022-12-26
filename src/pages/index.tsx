@@ -34,7 +34,9 @@ export default function Index(props: { tasks: Task[] }) {
 }
 
 export const getServerSideProps = async () => {
-  const resposne = await fetch("/api/tasks");
+  const resposne = await fetch(
+    "https://nextjs-postgres-crud-typescript.vercel.app/api/tasks"
+  );
   const tasks = await resposne.json();
 
   return {

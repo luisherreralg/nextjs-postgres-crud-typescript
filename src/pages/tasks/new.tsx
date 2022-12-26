@@ -27,27 +27,35 @@ export default function NewPage() {
   };
 
   const createTask = async (task: Task) => {
-    await fetch("/api/tasks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(task),
-    });
+    await fetch(
+      "https://nextjs-postgres-crud-typescript.vercel.app/api/tasks",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(task),
+      }
+    );
   };
 
   const updateTask = async (id: string, task: Task) => {
-    await fetch(`/api/tasks/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(task),
-    });
+    await fetch(
+      `https://nextjs-postgres-crud-typescript.vercel.app/api/tasks/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(task),
+      }
+    );
   };
 
   const loadTask = async (id: string) => {
-    const response = await fetch(`/api/tasks/${id}`);
+    const response = await fetch(
+      `https://nextjs-postgres-crud-typescript.vercel.app/api/tasks/${id}`
+    );
     const task = await response.json();
     setTask({ title: task.title, description: task.description });
   };
@@ -68,9 +76,12 @@ export default function NewPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await fetch(`/api/tasks/${id}`, {
-        method: "DELETE",
-      });
+      await fetch(
+        `https://nextjs-postgres-crud-typescript.vercel.app/api/tasks/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
       router.push("/");
     } catch (error) {
       console.log(error);
