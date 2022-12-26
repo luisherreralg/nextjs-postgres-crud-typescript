@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { connection } from "../../utils/database";
+import { connection } from "src/utils/database";
 
 /**
  * Para ver que todo funcina, en vez de crear un archivo hello world, se crea el archivo ping
