@@ -27,7 +27,7 @@ export default function NewPage() {
   };
 
   const createTask = async (task: Task) => {
-    await fetch("http://localhost:3000/api/tasks", {
+    await fetch("/api/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export default function NewPage() {
   };
 
   const updateTask = async (id: string, task: Task) => {
-    await fetch(`http://localhost:3000/api/tasks/${id}`, {
+    await fetch(`/api/tasks/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default function NewPage() {
   };
 
   const loadTask = async (id: string) => {
-    const response = await fetch(`http://localhost:3000/api/tasks/${id}`);
+    const response = await fetch(`/api/tasks/${id}`);
     const task = await response.json();
     setTask({ title: task.title, description: task.description });
   };
@@ -68,7 +68,7 @@ export default function NewPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await fetch(`http://localhost:3000/api/tasks/${id}`, {
+      await fetch(`/api/tasks/${id}`, {
         method: "DELETE",
       });
       router.push("/");
