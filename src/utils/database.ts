@@ -9,11 +9,12 @@ let connection: any;
  */
 if (!connection) {
   connection = new Pool({
-    user: "postgres",
-    host: "localhost",
-    database: "tasksdb",
-    password: "12345",
+    user: "user",
+    host: "dpg-cel00shgp3jlcsmb9skg-a.frankfurt-postgres.render.com",
+    database: "tasks_4uxx",
+    password: "6Un3IHMYqjrm3hoHmnTvYsrdPPpfojEH",
     port: 5432,
+    ssl: true,
   });
 }
 export { connection };

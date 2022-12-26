@@ -83,76 +83,78 @@ export default function NewPage() {
 
   return (
     <Layout>
-      <Grid
-        centered
-        columns={3}
-        verticalAlign="middle"
-        stlye={{ height: "70%" }}
-      >
-        <GridColumn>
-          <Card>
-            <Card.Content>
-              <Form onSubmit={handleSubmit}>
-                <Form.Field>
-                  <label htmlFor="title">Title:</label>
-                  <input
-                    type="text"
-                    placeholder="Write your title"
-                    name="title"
-                    onChange={handleForm}
-                    value={task.title}
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <label htmlFor="description">Title:</label>
-                  <textarea
-                    name="description"
-                    rows={2}
-                    placeholder="Write your description"
-                    onChange={handleForm}
-                    value={task.description}
-                  ></textarea>
-                </Form.Field>
-                {typeof router.query.id !== "string" ? (
-                  <Button primary>
-                    <Icon name="save" />
-                    Save
-                  </Button>
-                ) : (
-                  <Button color="teal">
-                    <Icon name="refresh" />
-                    Update
-                  </Button>
-                )}
-              </Form>
-            </Card.Content>
-          </Card>
+      <>
+        <Grid
+          centered
+          columns={3}
+          verticalAlign="middle"
+          stlye={{ height: "70%" }}
+        >
+          <GridColumn>
+            <Card>
+              <Card.Content>
+                <Form onSubmit={handleSubmit}>
+                  <Form.Field>
+                    <label htmlFor="title">Title:</label>
+                    <input
+                      type="text"
+                      placeholder="Write your title"
+                      name="title"
+                      onChange={handleForm}
+                      value={task.title}
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label htmlFor="description">Title:</label>
+                    <textarea
+                      name="description"
+                      rows={2}
+                      placeholder="Write your description"
+                      onChange={handleForm}
+                      value={task.description}
+                    ></textarea>
+                  </Form.Field>
+                  {typeof router.query.id !== "string" ? (
+                    <Button primary>
+                      <Icon name="save" />
+                      Save
+                    </Button>
+                  ) : (
+                    <Button color="teal">
+                      <Icon name="refresh" />
+                      Update
+                    </Button>
+                  )}
+                </Form>
+              </Card.Content>
+            </Card>
 
-          {typeof router.query.id === "string" && (
-            <Button
-              color="red"
-              onClick={() => {
-                SetOpenConfirm(true);
-              }}
-            >
-              <Icon name="delete" />
-              Delete
-            </Button>
-          )}
-        </GridColumn>
-      </Grid>
-      <Confirm
-        header="Delete a task"
-        content="Are you sure you want to delete this task?"
-        open={openConfirm}
-        onCancel={() => {
-          SetOpenConfirm(false);
-        }}
-        onConfirm={() => {
-          handleDelete(router.query.id as string);
-        }}
-        style={{ color: "black" }}
-      />
+            {typeof router.query.id === "string" && (
+              <Button
+                color="red"
+                onClick={() => {
+                  SetOpenConfirm(true);
+                }}
+              >
+                <Icon name="delete" />
+                Delete
+              </Button>
+            )}
+          </GridColumn>
+        </Grid>
+        <Confirm
+          header="Delete a task"
+          content="Are you sure you want to delete this task?"
+          open={openConfirm}
+          onCancel={() => {
+            SetOpenConfirm(false);
+          }}
+          onConfirm={() => {
+            handleDelete(router.query.id as string);
+          }}
+          style={{ color: "black" }}
+        />
+      </>
     </Layout>
   );
 }
